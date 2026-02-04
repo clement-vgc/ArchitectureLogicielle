@@ -1,0 +1,100 @@
+### ==========================================================================
+### TESTS DES QUESTIONNAIRES (EXERCICE 2)
+### ==========================================================================
+
+### 1. Récupérer tous les questionnaires
+GET http://localhost:5000/quiz/api/v1.0/questionnaires
+Accept: application/json
+
+### 2. Créer un nouveau questionnaire (Sport)
+POST http://localhost:5000/quiz/api/v1.0/questionnaires
+Content-Type: application/json
+
+{
+    "name": "Astronomie"
+}
+
+### 3. Récupérer un questionnaire spécifique (ID 1)
+GET http://localhost:5000/quiz/api/v1.0/questionnaires/1
+Accept: application/json
+
+### 4. Modifier le nom d'un questionnaire (ID 1)
+PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1
+Content-Type: application/json
+
+{
+    "name": "Géographie & Monde"
+}
+
+
+### ==========================================================================
+### TESTS DES QUESTIONS (EXERCICE 3 & 5)
+### ==========================================================================
+
+### 5. Récupérer toutes les questions du questionnaire 1
+GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
+Accept: application/json
+
+### 6. Ajouter une Question Ouverte (Héritage)
+POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
+Content-Type: application/json
+
+{
+    "title": "Quelle est la capitale de l'Islande ?",
+    "reponse": "Reykjavik"
+}
+
+### 7. Ajouter une Question QCM (Héritage)
+POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
+Content-Type: application/json
+
+{
+    "title": "Quelle est la plus grande planète ?",
+    "p1": "Mars",
+    "p2": "Jupiter",
+    "bonne_reponse": 2
+}
+
+### 8. Ajouter une Question standard (Fallback)
+POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
+Content-Type: application/json
+
+{
+    "title": "Question de secours sans type"
+}
+
+### 9. Récupérer une question précise (Question 1 du Questionnaire 1)
+GET http://127.0.0.1:5000/quiz/api/v1.0/questionnaires/1/questions/1
+Accept: application/json
+
+### ==========================================================================
+### TESTS DE MODIFICATION ET SUPPRESSION (EXERCICE 5.2)
+### ==========================================================================
+
+### 10. Modifier une Question Ouverte (Changement de réponse)
+# Remplacez /1 par l'ID réel d'une question ouverte obtenu via le GET
+PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1
+Content-Type: application/json
+
+{
+    "title": "Capitale de l'Islande (Modifiée)",
+    "reponse": "Reykjavík"
+}
+
+### 11. Modifier une Question QCM (Changement de propositions)
+# Remplacez /2 par l'ID réel d'un QCM
+PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/2
+Content-Type: application/json
+
+{
+    "title": "Quelle est la planète la plus proche du soleil ?",
+    "p1": "Mercure",
+    "p2": "Vénus",
+    "bonne_reponse": 1
+}
+
+### 12. Supprimer une question spécifique
+DELETE http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/3
+
+### 13. Supprimer un questionnaire complet
+DELETE http://localhost:5000/quiz/api/v1.0/questionnaires/3
