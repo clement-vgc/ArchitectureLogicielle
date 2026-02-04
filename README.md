@@ -1,4 +1,31 @@
-\ No newline at end of file
+# 🧠 Flask Quiz API REST
+
+Ce projet est une API REST développée avec **Flask** permettant de gérer des questionnaires thématiques et différents types de questions. L'application utilise **SQLAlchemy** pour assurer la persistance des données dans une base de données **SQLite** via un système d'héritage polymorphe.
+
+## ✨ Fonctionnalités
+
+- 📋 **Gestion des Questionnaires** : 
+    - Opérations CRUD complètes (Création, Lecture, Modification, Suppression).
+    - Redirection automatique de la racine vers la liste des questionnaires.
+- ❓ **Système de Questions Polymorphes** : 
+    - Utilisation de l'héritage de table pour gérer plusieurs types de questions (Exercice 5).
+    - **Questions simples** : Un énoncé uniquement.
+    - **Questions Ouvertes** : Incluent un champ pour la réponse attendue.
+    - **Questions QCM** : Proposent deux choix et l'indice de la bonne réponse.
+- 🔗 **Ressources Imbriquées** : 
+    - Les questions sont gérées comme des sous-ressources des questionnaires (ex: `/questionnaires/<id>/questions`).
+- 🛠️ **Initialisation Automatisée** : 
+    - Commande personnalisée `flask syncdb` pour configurer la base de données et injecter des jeux de tests thématiques.
+
+## 🛠️ Technologies utilisées
+
+* **Python 3** : Langage de programmation principal.
+* **Flask** : Micro-framework web.
+* **Flask-SQLAlchemy** : ORM pour la gestion de la base de données SQLite.
+* **SQLite** : Moteur de base de données relationnelle.
+
+## ⚙️ Installation et Configuration
+
 1. **Cloner le dépôt** :
    ```bash
    git clone https://github.com/votre-utilisateur/votre-projet.git
