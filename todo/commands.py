@@ -3,7 +3,7 @@ from .models import Questionnaire, QuestionOuverte, QuestionQCM
 
 @app.cli.command()
 def syncdb():
-    """Initialise la base avec 3 questionnaires et des questions variées."""
+    """Initialise la base de données avec 3 questionnaires qui ont entre 2 et 3 questions"""
     db.drop_all() 
     db.create_all()
 
@@ -36,4 +36,4 @@ def syncdb():
         QuestionOuverte(title="Quelle planète est appelée la planète rouge ?", reponse="Mars", questionnaire_id=q3.id)
     ])
     db.session.commit()
-    print("Base de données initialisée ")
+    print("Base de données initialisée !")

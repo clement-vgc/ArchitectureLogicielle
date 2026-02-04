@@ -1,12 +1,10 @@
-### ==========================================================================
-### TESTS DES QUESTIONNAIRES (EXERCICE 2)
-### ==========================================================================
+### TESTS DES QUESTIONNAIRES
 
 ### 1. Récupérer tous les questionnaires
 GET http://localhost:5000/quiz/api/v1.0/questionnaires
 Accept: application/json
 
-### 2. Créer un nouveau questionnaire (Sport)
+### 2. Créer un nouveau questionnaire
 POST http://localhost:5000/quiz/api/v1.0/questionnaires
 Content-Type: application/json
 
@@ -14,11 +12,11 @@ Content-Type: application/json
     "name": "Astronomie"
 }
 
-### 3. Récupérer un questionnaire spécifique (ID 1)
+### 3. Récupérer un questionnaire spécifique (ici le 1)
 GET http://localhost:5000/quiz/api/v1.0/questionnaires/1
 Accept: application/json
 
-### 4. Modifier le nom d'un questionnaire (ID 1)
+### 4. Modifier le nom d'un questionnaire 
 PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1
 Content-Type: application/json
 
@@ -26,16 +24,14 @@ Content-Type: application/json
     "name": "Géographie & Monde"
 }
 
+### TESTS DES QUESTIONS
 
-### ==========================================================================
-### TESTS DES QUESTIONS (EXERCICE 3 & 5)
-### ==========================================================================
 
 ### 5. Récupérer toutes les questions du questionnaire 1
 GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
 Accept: application/json
 
-### 6. Ajouter une Question Ouverte (Héritage)
+### 6. Ajouter une Question Ouverte
 POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
 Content-Type: application/json
 
@@ -44,7 +40,7 @@ Content-Type: application/json
     "reponse": "Reykjavik"
 }
 
-### 7. Ajouter une Question QCM (Héritage)
+### 7. Ajouter une Question QCM 
 POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
 Content-Type: application/json
 
@@ -55,24 +51,21 @@ Content-Type: application/json
     "bonne_reponse": 2
 }
 
-### 8. Ajouter une Question standard (Fallback)
+### 8. Ajouter une Question standard
 POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions
 Content-Type: application/json
 
 {
-    "title": "Question de secours sans type"
+    "title": "Question"
 }
 
 ### 9. Récupérer une question précise (Question 1 du Questionnaire 1)
-GET http://127.0.0.1:5000/quiz/api/v1.0/questionnaires/1/questions/1
+GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1
 Accept: application/json
 
-### ==========================================================================
-### TESTS DE MODIFICATION ET SUPPRESSION (EXERCICE 5.2)
-### ==========================================================================
+### TESTS DE MODIFICATION ET SUPPRESSION
 
-### 10. Modifier une Question Ouverte (Changement de réponse)
-# Remplacez /1 par l'ID réel d'une question ouverte obtenu via le GET
+### 10. Modifier une Question Ouverte
 PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1
 Content-Type: application/json
 
@@ -81,8 +74,7 @@ Content-Type: application/json
     "reponse": "Reykjavík"
 }
 
-### 11. Modifier une Question QCM (Changement de propositions)
-# Remplacez /2 par l'ID réel d'un QCM
+### 11. Modifier une Question QCM
 PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/2
 Content-Type: application/json
 

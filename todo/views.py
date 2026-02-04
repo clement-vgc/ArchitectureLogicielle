@@ -1,11 +1,10 @@
 from flask import jsonify, abort, make_response, request, url_for, redirect
-from .app import app
+from .app import app, db
 from .models import (
     get_all_questionnaires, get_questionnaire_by_id, 
     create_questionnaire, delete_questionnaire,
     Question, QuestionOuverte, QuestionQCM
 )
-from .app import db
 
 def make_public_questionnaire(quiz):
     new_quiz = {}

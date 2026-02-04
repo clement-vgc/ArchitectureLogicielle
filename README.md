@@ -82,14 +82,99 @@ L'API sera accessible par défaut sur `http://localhost:5000`.
 | `PUT` | `/quiz/api/v1.0/questionnaires/<id>/questions/<qid>` | Modifie une question |
 | `DELETE` | `/quiz/api/v1.0/questionnaires/<id>/questions/<qid>` | Supprime une question |
 
-#### Formats de données pour POST/PUT (Questions) :
-- **Question Ouverte** : `{"title": "...", "reponse": "..."}`
-- **QCM** : `{"title": "...", "p1": "...", "p2": "...", "bonne_reponse": 1}`
-- **Standard** : `{"title": "..."}`
-
 ## 🧪 Tests
 
 Un fichier `api_tests.http` est fourni à la racine du projet. Il permet de tester l'ensemble des fonctionnalités de l'API en utilisant l'extension **REST Client** de VS Code ou via `curl`.
+
+Si vous souhaitez faire les tests avec les commandes curl, voici les commandes à entrer dans le terminal : (assurez-vous d'avoir bien le serveur lancé)
+
+# TESTS DES QUESTIONNAIRES
+
+
+1. Récupérer tous les questionnaires
+
+```bash
+curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires -H "Accept: application/json"
+```
+
+2. Créer un nouveau questionnaire
+
+```bash
+curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires -H "Content-Type: application/json" -d '{"name": "Astronomie"}'
+```
+
+3. Récupérer un questionnaire spécifique (ici le 1)
+
+```bash
+curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1 -H "Accept: application/json"
+```
+
+4. Modifier le nom d'un questionnaire 
+
+```bash
+curl -X PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1 -H "Content-Type: application/json" -d '{"name": "Géographie & Monde"}'
+```
+
+# TESTS DES QUESTIONS
+
+
+5. Récupérer toutes les questions du questionnaire 1
+
+```bash
+curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "Accept: application/json"
+```
+
+6. Ajouter une Question Ouverte
+
+```bash
+curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions \
+-H "Content-Type: application/json" \
+-d '{"title": "Quelle est la capitale de l\'Islande ?", "reponse": "Reykjavik"}'
+```
+
+7. Ajouter une Question QCM
+
+```bash
+curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "Content-Type: application/json" -d '{"title": "Quelle est la plus grande planète ?", "p1": "Mars", "p2": "Jupiter", "bonne_reponse": 2}'
+```
+
+8. Ajouter une Question standard
+
+```bash
+curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "Content-Type: application/json" -d '{"title": "Question"}'
+```
+
+9. Récupérer une question précise (Question 1 du Questionnaire 1)
+
+```bash
+curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1 -H "Accept: application/json"
+```
+
+# TESTS DE MODIFICATION ET SUPPRESSION
+
+10. Modifier une Question Ouverte
+
+```bash
+curl -X PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1 -H "Content-Type: application/json" -d '{"title": "Capitale de l\'Islande (Modifiée)", "reponse": "Reykjavík"}'
+```
+
+11. Modifier une Question QCM
+
+```bash
+curl -X PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/2 -H "Content-Type: application/json" -d '{"title": "Quelle est la planète la plus proche du soleil ?", "p1": "Mercure", "p2": "Vénus", "bonne_reponse": 1}'
+```
+
+12. Supprimer une question spécifique
+
+```bash
+curl -X DELETE http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/3
+```
+
+13. Supprimer un questionnaire complet
+
+```bash
+curl -X DELETE http://localhost:5000/quiz/api/v1.0/questionnaires/3
+```
 
 ## 📂 Structure du projet
 
