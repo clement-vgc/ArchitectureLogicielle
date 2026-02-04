@@ -88,7 +88,7 @@ Un fichier `api_tests.http` est fourni à la racine du projet. Il permet de test
 
 Si vous souhaitez faire les tests avec les commandes curl, voici les commandes à entrer dans le terminal : (assurez-vous d'avoir bien le serveur lancé)
 
-# TESTS DES QUESTIONNAIRES
+### Tests pour les questionnaires
 
 
 1. Récupérer tous les questionnaires
@@ -115,7 +115,7 @@ curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1 -H "Accept: app
 curl -X PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1 -H "Content-Type: application/json" -d '{"name": "Géographie & Monde"}'
 ```
 
-# TESTS DES QUESTIONS
+### Tests pour les questions
 
 
 5. Récupérer toutes les questions du questionnaire 1
@@ -150,7 +150,7 @@ curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "
 curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1 -H "Accept: application/json"
 ```
 
-# TESTS DE MODIFICATION ET SUPPRESSION
+### Tests de modification et de suppression
 
 10. Modifier une Question Ouverte
 
