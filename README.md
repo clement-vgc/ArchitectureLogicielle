@@ -38,26 +38,6 @@ flask run
 ```
 L'API sera accessible par défaut sur `http://localhost:5000`.
 
-## 📑 Documentation de l'API
-
-### Questionnaires
-| Méthode | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/quiz/api/v1.0/questionnaires` | Liste tous les questionnaires |
-| `POST` | `/quiz/api/v1.0/questionnaires` | Crée un nouveau questionnaire |
-| `GET` | `/quiz/api/v1.0/questionnaires/<id>` | Détails d'un questionnaire |
-| `PUT` | `/quiz/api/v1.0/questionnaires/<id>` | Modifie un questionnaire |
-| `DELETE` | `/quiz/api/v1.0/questionnaires/<id>` | Supprime un questionnaire et ses questions |
-
-### Questions 
-| Méthode | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/quiz/api/v1.0/questionnaires/<id>/questions` | Liste les questions d'un questionnaire |
-| `POST` | `/quiz/api/v1.0/questionnaires/<id>/questions` | Ajoute une question (Simple, Ouverte ou QCM) |
-| `GET` | `/quiz/api/v1.0/questionnaires/<id>/questions/<qid>` | Détails d'une question spécifique |
-| `PUT` | `/quiz/api/v1.0/questionnaires/<id>/questions/<qid>` | Modifie une question |
-| `DELETE` | `/quiz/api/v1.0/questionnaires/<id>/questions/<qid>` | Supprime une question |
-
 ## 🧪 Tests
 
 Un fichier `api_tests.http` est fourni à la racine du projet. Il permet de tester l'ensemble des fonctionnalités de l'API en utilisant l'extension **REST Client** de VS Code ou via `curl`.
