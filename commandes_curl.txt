@@ -20,7 +20,7 @@ curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "A
 
 6. Ajouter une Question Ouverte
 
-curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "Content-Type: application/json" -d '{"title": "Quelle est la capitale de l\'Islande ?", "reponse": "Reykjavik"}'
+curl -X POST http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions -H "Content-Type: application/json" -d "{\"title\": \"Quelle est la capitale de l'Islande ?\", \"reponse\": \"Reykjavik\"}"
 
 7. Ajouter une Question QCM
 
@@ -36,7 +36,7 @@ curl -X GET http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1 -H 
 
 10. Modifier une Question Ouverte
 
-curl -X PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1 -H "Content-Type: application/json" -d '{"title": "Capitale de l\'Islande (Modifiée)", "reponse": "Reykjavík"}'
+curl -X PUT http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/1 -H "Content-Type: application/json" -d "{\"title\": \"Capitale de l'Islande\", \"reponse\": \"Reykjavík\"}"
 
 11. Modifier une Question QCM
 
@@ -49,3 +49,4 @@ curl -X DELETE http://localhost:5000/quiz/api/v1.0/questionnaires/1/questions/3
 13. Supprimer un questionnaire complet
 
 curl -X DELETE http://localhost:5000/quiz/api/v1.0/questionnaires/3
+
